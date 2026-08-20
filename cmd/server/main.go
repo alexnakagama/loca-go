@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+
+	// When a request to / execute this function
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "Loca-Go API")
 	})
