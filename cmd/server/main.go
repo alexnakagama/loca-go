@@ -7,7 +7,6 @@ import (
 
 func main() {
 
-	// When a request to / execute this function
 	// Request contins what the client sent
 	// ResponseWriter is the object used to respond to the client
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
