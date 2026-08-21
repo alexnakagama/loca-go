@@ -4,11 +4,16 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/alexnakagama/loca-go/interal/handler"
+	"github.com/alexnakagama/loca-go/internal/store"
+	"github.com/alexnakagama/loca-go/internal/handler"
 )
 
 func main() {
-	http.HandleFunc("/locations", handler.HandleLocation)
+	locationStore := store.NewStore()
+
+	locationHandler := handler.NewLocationHandler(locationStore)
+
+	http.HandleFunc("/locations", locationHandler.HandleLocation)
 
 	fmt.Println("server running on port: 8080")
 
