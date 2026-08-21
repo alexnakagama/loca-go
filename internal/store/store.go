@@ -1,6 +1,6 @@
 package store
 
-import "github.com/alexnakagama/loca-go/interal/model"
+import "github.com/alexnakagama/loca-go/internal/model"
 
 type Store struct {
 	locations map[int]model.Location
