@@ -6,4 +6,8 @@ type Store struct {
 	locations map[int]model.Location
 }
 
-func NewStore() *Store {}
+func NewStore() *Store {
+	return &Store{
+		locations: make(map[int]model.Location),
+	}
+}
