@@ -1,6 +1,8 @@
 package model
 
 import (
+	"errors"
+	"strings"
 	"time"
 )
 
@@ -10,4 +12,10 @@ type Person struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-func Create() Person {}
+func (p *Person) Validate() error {
+	if strings.TrimSpace(p.Name) == "" {
+		return errors.New("name cannot be empty")
+	}
+
+	return nil
+}
