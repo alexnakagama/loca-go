@@ -40,3 +40,6 @@ func (h *LocationHandler) HandleLocation(w http.ResponseWriter, r *http.Request)
 
 	json.NewEncoder(w).Encode(location)
 }
+
+func (h *LocationHandler) HandleGetLocation(w http.ResponseWriter, r *http.Request) {
+}

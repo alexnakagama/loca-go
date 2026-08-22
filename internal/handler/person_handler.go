@@ -43,7 +43,7 @@ func (h *PersonHandler) HandlePerson(w http.ResponseWriter, r * http.Request) {
 	json.NewEncoder(w).Encode(person)
 }
 
-func (h *PersonHandler) GetPerson(w http.ResponseWriter, r *http.Request) {
+func (h *PersonHandler) HandleGetPerson(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(r.URL.Path, "/")
 
 	id, err := strconv.Atoi(parts[2])

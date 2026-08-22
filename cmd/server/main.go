@@ -15,7 +15,9 @@ func main() {
 	personHandler := handler.NewPersonHandler(store)
 
 	http.HandleFunc("/locations", locationHandler.HandleLocation)
+
 	http.HandleFunc("/persons", personHandler.HandlePerson)
+	http.HandleFunc("/persons/", personHandler.HandleGetPerson)
 
 	fmt.Println("server running on port: 8080")
 
