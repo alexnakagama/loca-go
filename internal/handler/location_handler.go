@@ -2,7 +2,6 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/alexnakagama/loca-go/internal/model"
@@ -30,5 +29,8 @@ func (h *LocationHandler) HandleLocation(w http.ResponseWriter, r *http.Request)
 
 	h.store.SetLocation(location)
 
-	fmt.Println(location)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(location)
 }
