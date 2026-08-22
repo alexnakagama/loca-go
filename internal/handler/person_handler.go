@@ -40,3 +40,5 @@ func (h *PersonHandler) HandlePerson(w http.ResponseWriter, r * http.Request) {
 
 	json.NewEncoder(w).Encode(person)
 }
+
+func (h *PersonHandler) GetPerson(w http.ResponseWriter, r *http.Request) {}
