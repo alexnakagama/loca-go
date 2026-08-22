@@ -3,6 +3,8 @@ package handler
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
+	"strconv"
 
 	"github.com/alexnakagama/loca-go/internal/model"
 	"github.com/alexnakagama/loca-go/internal/store"
@@ -42,4 +44,20 @@ func (h *LocationHandler) HandleLocation(w http.ResponseWriter, r *http.Request)
 }
 
 func (h *LocationHandler) HandleGetLocation(w http.ResponseWriter, r *http.Request) {
+	parts := strings.Split(r.URL.Path, "/")
+
+	personID, err := strconv.Atoi(parts[2])
+	if err != nil {
+		http.Error(w, "invalid person id", http.StatusBadRequest)
+		return
+	}
+
+	location, err := h.store.GetLocation(personID)
+	if err != nil {
+		http.Error(w, "location not found", http.StatusNotFound)
+		return
+	}
+	
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(location)
 }
