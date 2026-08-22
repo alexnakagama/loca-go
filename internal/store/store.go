@@ -4,6 +4,7 @@ import "github.com/alexnakagama/loca-go/internal/model"
 
 type Store struct {
 	locations map[int]model.Location
+	persons map[int]model.Person
 }
 
 func NewStore() *Store {
