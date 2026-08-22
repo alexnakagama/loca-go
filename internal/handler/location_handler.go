@@ -30,6 +30,7 @@ func (h *LocationHandler) HandleLocation(w http.ResponseWriter, r *http.Request)
 	err = location.Validate()
 	if err != nil {
 		http.Error(w, "invalid location", http.StatusBadRequest)
+		return
 	}
 
 	h.store.SetLocation(location)
