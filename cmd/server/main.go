@@ -9,11 +9,10 @@ import (
 )
 
 func main() {
-	locationStore := store.NewStore()
-	personStore := store.NewStore()
+	store := store.NewStore()
 
-	locationHandler := handler.NewLocationHandler(locationStore)
-	personHandler := handler.NewPersonHandler(personStore)
+	locationHandler := handler.NewLocationHandler(store)
+	personHandler := handler.NewPersonHandler(store)
 
 	http.HandleFunc("/locations", locationHandler.HandleLocation)
 	http.HandleFunc("/persons", personHandler.HandlePerson)
