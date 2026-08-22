@@ -22,6 +22,8 @@ func (s *Store) SetLocation(location model.Location) {
 	s.locations[location.PersonID] = location
 }
 
+func (s *Store) GetLocation(personID int) (model.Location, error) {}
+
 func (s *Store) SetPerson(person model.Person) {
 	s.persons[person.ID] = person
 }
