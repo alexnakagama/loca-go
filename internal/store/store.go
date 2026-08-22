@@ -10,9 +10,14 @@ type Store struct {
 func NewStore() *Store {
 	return &Store{
 		locations: make(map[int]model.Location),
+		persons: make(map[int]model.Person),
 	}
 }
 
 func (s *Store) SetLocation(location model.Location) {
 	s.locations[location.PersonID] = location
+}
+
+func (s *Store) SetPerson(person model.Person) {
+	s.persons[person.ID] = person
 }
