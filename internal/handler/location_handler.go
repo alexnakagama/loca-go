@@ -27,6 +27,11 @@ func (h *LocationHandler) HandleLocation(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
+	err = location.Validate()
+	if err != nil {
+		http.Error(w, "invalid location", http.StatusBadRequest)
+	}
+
 	h.store.SetLocation(location)
 
 	w.Header().Set("Content-Type", "application/json")
