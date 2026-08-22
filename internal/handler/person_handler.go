@@ -55,6 +55,7 @@ func (h *PersonHandler) HandleGetPerson(w http.ResponseWriter, r *http.Request) 
 	person, err := h.store.GetPerson(id)
 	if err != nil {
 		http.Error(w, "person not found", http.StatusNotFound)
+		return
 	}
 	
 	w.Header().Set("Content-Type", "application/json")
