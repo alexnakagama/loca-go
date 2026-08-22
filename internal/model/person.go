@@ -12,5 +12,9 @@ func (p Person) Validate() error {
 		return errors.New("ERROR: invalid ID")
 	}
 
+	if p.Name == "" {
+		return errors.New("ERROR: invalid name")
+	}
+
 	return nil
 }
