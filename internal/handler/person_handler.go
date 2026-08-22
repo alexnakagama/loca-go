@@ -1,6 +1,10 @@
 package handler
 
-import "github.com/alexnakagama/loca-go/internal/store"
+import (
+	"net/http"
+
+	"github.com/alexnakagama/loca-go/internal/store"
+)
 
 type PersonHandler struct {
 	store *store.Store
@@ -11,3 +15,5 @@ func NewPersonHandler(store *store.Store) *PersonHandler {
 		store: store,
 	}
 }
+
+func (h *PersonHandler) HandlePerson(w http.ResponseWriter, r * http.Request) {}
