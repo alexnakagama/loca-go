@@ -15,6 +15,7 @@ func main() {
 	personHandler := handler.NewPersonHandler(store)
 
 	http.HandleFunc("/locations", locationHandler.HandleLocation)
+	http.HandleFunc("/locations/", locationHandler.HandleGetLocation)
 
 	http.HandleFunc("/persons", personHandler.HandlePerson)
 	http.HandleFunc("/persons/", personHandler.HandleGetPerson)
