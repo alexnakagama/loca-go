@@ -10,10 +10,13 @@ import (
 
 func main() {
 	locationStore := store.NewStore()
+	personStore := store.NewStore()
 
 	locationHandler := handler.NewLocationHandler(locationStore)
+	personHandler := handler.NewPersonHandler(personStore)
 
 	http.HandleFunc("/locations", locationHandler.HandleLocation)
+	http.HandleFunc("/persons", personHandler.HandlePerson)
 
 	fmt.Println("server running on port: 8080")
 
