@@ -1,6 +1,10 @@
 package store
 
-import "github.com/alexnakagama/loca-go/internal/model"
+import (
+	"errors"
+
+	"github.com/alexnakagama/loca-go/internal/model"
+)
 
 type Store struct {
 	locations map[int]model.Location
@@ -22,4 +26,11 @@ func (s *Store) SetPerson(person model.Person) {
 	s.persons[person.ID] = person
 }
 
-func (s *Store) GetPerson(id int) (model.Person, error) {}
+func (s *Store) GetPerson(id int) (model.Person, error) {
+	person, ok := s.persons[id]
+	if !ok {
+		return model.Person{}, errors.New("person not found")
+	}
+
+	return person, nil
+}
